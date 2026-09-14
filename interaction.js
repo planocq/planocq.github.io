@@ -1,0 +1,1 @@
+document.querySelectorAll('.comparison').forEach(function(comparison){var slider=comparison.querySelector('input[type="range"]');if(!slider)return;function update(){comparison.style.setProperty('--position',slider.value+'%');}slider.addEventListener('input',update);slider.addEventListener('change',update);update();});

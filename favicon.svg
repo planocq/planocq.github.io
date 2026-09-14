@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" fill="#101010"/>
+  <text x="7" y="41" fill="#EFEDE6" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="-2">P</text>
+  <circle cx="30" cy="25" r="3" fill="#FF5438"/><circle cx="30" cy="36" r="3" fill="#FF5438"/>
+  <text x="37" y="41" fill="#EFEDE6" font-family="Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="-2">CQ</text>
+</svg>
