@@ -1,58 +1,20 @@
-name: Generate invitation routes
+name: Validate unique link generator
 
 on:
   push:
     paths:
+      - "tools/unique_link.py"
+      - "tools/test_unique_link.py"
       - ".github/workflows/generate-invitation-routes.yml"
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  generate:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: Read repository
-        uses: actions/checkout@v4
-      - name: Generate routes 1/1 through 1/50
-        shell: bash
-        run: |
-          set -euo pipefail
-          for invitation_number in {1..50}; do
-            mkdir -p "1/$invitation_number"
-            cat > "1/$invitation_number/index.html" <<'HTML'
-          <!doctype html>
-          <html lang="es">
-            <head>
-              <meta charset="utf-8" />
-              <meta name="viewport" content="width=device-width, initial-scale=1" />
-              <meta name="robots" content="noindex, nofollow" />
-              <title>PLANO:CQ</title>
-              <style>html, body { margin: 0; min-height: 100%; background: #101010; }</style>
-            </head>
-            <body>
-              <script>
-                fetch("/")
-                  .then((response) => {
-                    if (!response.ok) throw new Error("No se pudo cargar el sitio");
-                    return response.text();
-                  })
-                  .then((html) => {
-                    document.open();
-                    document.write(html);
-                    document.close();
-                  });
-              </script>
-            </body>
-          </html>
-          HTML
-          done
-      - name: Publish generated routes
-        shell: bash
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add 1
-          git diff --cached --quiet && exit 0
-          git commit -m "Prepare invitation routes 1-1 through 1-50"
-          git push origin HEAD:main
+      - uses: actions/checkout@v4
+      - name: Test the sole supported generator (no route writes)
+        run: python3 -m unittest discover -s tools -p 'test_*.py' -v
