@@ -1,0 +1,49 @@
+/* PLANO:CQ — explicit continuation cue */
+.hero .scroll-cue {
+  align-items: center;
+  background: var(--paper);
+  bottom: 0;
+  color: var(--ink);
+  display: flex;
+  font-size: 9px;
+  gap: 24px;
+  height: 50px;
+  justify-content: space-between;
+  left: 0;
+  letter-spacing: .08em;
+  padding: 0 0 0 34px;
+  right: 0;
+  transition: background .2s ease, color .2s ease;
+  writing-mode: horizontal-tb;
+  z-index: 6;
+}
+.hero { min-height: 100svh; }
+.scroll-cue-index { opacity: .58; }
+.scroll-cue-action { align-items: center; display: flex; gap: 22px; }
+.scroll-cue-action b {
+  align-items: center;
+  background: var(--coral);
+  display: flex;
+  font-family: var(--font-instrument), Arial, sans-serif;
+  font-size: 19px;
+  font-weight: 500;
+  height: 50px;
+  justify-content: center;
+  width: 52px;
+}
+.hero .scroll-cue:hover,
+.hero .scroll-cue:focus-visible { background: var(--coral); outline: none; }
+.hero .scroll-cue:hover .scroll-cue-action b,
+.hero .scroll-cue:focus-visible .scroll-cue-action b { background: var(--ink); color: var(--paper); }
+
+@media (max-width: 900px) {
+  .hero .scroll-cue { display: flex; height: 46px; padding-left: 20px; }
+  .scroll-cue-action b { height: 46px; width: 48px; }
+  .hero-copy { bottom: 76px; }
+}
+
+@media (max-width: 560px) {
+  .hero .scroll-cue { font-size: 8px; }
+  .scroll-cue-index { display: none; }
+  .scroll-cue-action { justify-content: space-between; width: 100%; }
+}
