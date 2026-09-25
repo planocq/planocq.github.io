@@ -36,14 +36,53 @@
 .hero .scroll-cue:hover .scroll-cue-action b,
 .hero .scroll-cue:focus-visible .scroll-cue-action b { background: var(--ink); color: var(--paper); }
 
+/* The next-section edge is an action, not a decorative footer. */
+.section-cue {
+  align-items: center;
+  border-bottom: 1px solid var(--paper-line);
+  display: flex;
+  font-size: 9px;
+  height: 50px;
+  justify-content: space-between;
+  letter-spacing: .08em;
+  margin: -18px -34px 0;
+  padding-left: 34px;
+  transition: background .2s ease, color .2s ease;
+}
+.section-cue-index { color: rgba(239,237,230,.58); }
+.section-cue-action { align-items: center; display: flex; gap: 22px; }
+.section-cue-action b {
+  align-items: center;
+  background: var(--coral);
+  color: var(--ink);
+  display: flex;
+  font-family: var(--font-instrument), Arial, sans-serif;
+  font-size: 19px;
+  font-weight: 500;
+  height: 50px;
+  justify-content: center;
+  width: 52px;
+}
+.section-cue:hover,
+.section-cue:focus-visible { background: var(--coral); color: var(--ink); outline: none; }
+.section-cue:hover .section-cue-index,
+.section-cue:focus-visible .section-cue-index { color: var(--ink); }
+.section-cue:hover .section-cue-action b,
+.section-cue:focus-visible .section-cue-action b { background: var(--paper); }
+
 @media (max-width: 900px) {
   .hero .scroll-cue { display: flex; height: 46px; padding-left: 20px; }
   .scroll-cue-action b { height: 46px; width: 48px; }
   .hero-copy { bottom: 76px; }
+  .section-cue { height: 46px; margin-left: -20px; margin-right: -20px; padding-left: 20px; }
+  .section-cue-action b { height: 46px; width: 48px; }
 }
 
 @media (max-width: 560px) {
   .hero .scroll-cue { font-size: 8px; }
   .scroll-cue-index { display: none; }
   .scroll-cue-action { justify-content: space-between; width: 100%; }
+  .section-cue { font-size: 8px; }
+  .section-cue-index { display: none; }
+  .section-cue-action { justify-content: space-between; width: 100%; }
 }
